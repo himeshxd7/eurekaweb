@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="dashboard-container">
+  {% if not user %}
+    <main class="dashboard-main" style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;">
+      <h2 style="margin-bottom:24px;font-size:2em;font-weight:700;color:#1a237e;letter-spacing:0.5px;text-align:center;">Login to Your Account</h2>
+      {% if login_error %}<div class="alert alert-danger" style="background:#ffeaea;color:#e74c3c;border-radius:8px;padding:10px 16px;margin-bottom:18px;font-size:1em;max-width:350px;">{{ login_error }}</div>{% endif %}
+      <form method="POST" action="/profile" class="login-form" style="background:#fff;border-radius:18px;box-shadow:0 4px 24px rgba(0,0,0,0.10);padding:36px 32px 28px 32px;max-width:350px;width:100%;display:flex;flex-direction:column;gap:18px;align-items:center;">
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+          <label style="font-weight:600;color:#1a237e;font-size:1.08em;margin-bottom:2px;">Username</label>
+          <input type="text" name="username" required class="form-control mb-2" style="border:1.5px solid #e3f0ff;border-radius:10px;padding:12px 14px;font-size:1.08em;background:#f4f6fb;transition:border 0.2s;outline:none;">
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+          <label style="font-weight:600;color:#1a237e;font-size:1.08em;margin-bottom:2px;">Password</label>
+          <input type="password" name="password" required class="form-control mb-2" style="border:1.5px solid #e3f0ff;border-radius:10px;padding:12px 14px;font-size:1.08em;background:#f4f6fb;transition:border 0.2s;outline:none;">
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+          <label style="font-weight:600;color:#1a237e;font-size:1.08em;margin-bottom:2px;">Role</label>
+          <div class="role-toggle mb-3" style="display:flex;gap:12px;">
+            <input type="hidden" name="role" id="role-input" value="student">
+            <button type="button" class="role-btn-toggle active" id="student-btn">Student</button>
+            <button type="button" class="role-btn-toggle" id="teacher-btn">Teacher</button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" style="width:100%;background:linear-gradient(90deg,#007bff 60%,#1565c0 100%);color:#fff;border:none;border-radius:10px;padding:14px 0;font-size:1.15em;font-weight:700;letter-spacing:1px;box-shadow:0 2px 8px rgba(21,101,192,0.10);transition:background 0.2s,box-shadow 0.2s;cursor:pointer;">Login</button>
+      </form>
+    </main>
+    <style>
+      .dashboard-main {
+        background: linear-gradient(120deg, #f4f6fb 60%, #e3f0ff 100%);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        border-radius: 0 16px 16px 0;
+        min-height: 80vh;
+      }
+      .role-toggle {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .role-btn-toggle {
+        background: #e3f0ff;
+        color: #007bff;
+        border: none;
+        border-radius: 16px;
+        padding: 6px 18px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        letter-spacing: 1px;
+      }
+      .role-btn-toggle.active,
+      .role-btn-toggle:focus {
+        background: #007bff;
+        color: #fff;
+        outline: none;
+        box-shadow: 0 2px 8px rgba(0,123,255,0.10);
+      }
+    </style>
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('student-btn').onclick = function() {
+          document.getElementById('role-input').value = 'student';
+          this.classList.add('active');
+          document.getElementById('teacher-btn').classList.remove('active');
+        };
+        document.getElementById('teacher-btn').onclick = function() {
+          document.getElementById('role-input').value = 'teacher';
+          this.classList.add('active');
+          document.getElementById('student-btn').classList.remove('active');
+        };
+      });
+    </script>
+  {% else %}
+    <aside class="sidebar" style="background:#fff;border-radius:18px 0 0 18px;box-shadow:0 4px 24px rgba(0,0,0,0.07);padding:32px 18px 24px 18px;min-width:220px;max-width:260px;width:22vw;display:flex;flex-direction:column;align-items:center;">
+      <div class="profile-section" style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;">
+        <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" class="profile-pic" alt="Profile Picture" style="width:70px;height:70px;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-bottom:10px;">
+        <h3 style="font-size:1.2em;font-weight:700;color:#222;margin-bottom:4px;">{{ user.username|capitalize }}</h3>
+        <button class="role-btn" disabled style="background:#e3f0ff;color:#007bff;border-radius:12px;padding:2px 14px;font-size:0.95em;font-weight:600;margin-bottom:0;margin-top:2px;letter-spacing:0.5px;border:none;">{{ user.role|capitalize }}</button>
+      </div>
+      <nav class="sidebar-nav" style="width:100%;">
+        <ul style="list-style:none;padding:0;margin:0;width:100%;">
+          <li style="margin-bottom:10px;"><a href="#" id="profile-tab" class="active" style="display:block;padding:10px 0;text-align:center;border-radius:8px;color:#222;font-weight:600;font-size:1.05em;text-decoration:none;transition:background 0.2s,color 0.2s;">Profile</a></li>
+          <li><a href="#" id="notes-tab" style="display:block;padding:10px 0;text-align:center;border-radius:8px;color:#222;font-weight:600;font-size:1.05em;text-decoration:none;transition:background 0.2s,color 0.2s;">Notes</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="dashboard-main" style="background:#f8fafd;border-radius:0 18px 18px 0;box-shadow:0 8px 32px rgba(0,0,0,0.08);min-height:80vh;padding:32px 32px 32px 32px;width:100%;display:flex;flex-direction:column;align-items:center;gap:0;">
+      <section id="profile-section" style="width:100%;max-width:700px;min-width:340px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:32px 32px 24px 32px;margin-bottom:0;display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr;gap:0;align-items:center;display:block;">
+        <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:18px;">
+          <h2 style="font-size:1.45em;font-weight:700;color:#1a237e;letter-spacing:0.2px;text-align:center;margin-bottom:0;">Welcome, {{ user.username|capitalize }}</h2>
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+          {% if pw_error %}<div class="alert alert-danger" style="background:#ffeaea;color:#e74c3c;border-radius:8px;padding:10px 16px;margin-bottom:0;font-size:1em;">{{ pw_error }}</div>{% endif %}
+          {% if pw_success %}<div class="alert alert-success" style="background:#e6f9ea;color:#27ae60;border-radius:8px;padding:10px 16px;margin-bottom:0;font-size:1em;">{{ pw_success }}</div>{% endif %}
+          <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:220px;align-items:flex-start;">
+            <button id="change-password-btn" style="width:100%;border:none;border-radius:8px;padding:12px 0;font-size:1em;font-weight:600;background:#e3f0ff;color:#007bff;cursor:pointer;transition:background 0.2s,color 0.2s;">Change Password</button>
+            <form method="POST" action="/logout" style="width:100%;margin:0;display:flex;align-items:center;">
+              <button type="submit" class="logout-btn" style="width:100%;background:#ffeded;color:#e74c3c;border:none;border-radius:8px;padding:12px 0;font-size:1em;font-weight:600;cursor:pointer;">Logout</button>
+            </form>
+          </div>
+          <form id="change-password-form" method="POST" action="/change_password" style="display:none;flex-direction:column;gap:14px;margin-bottom:0;width:100%;max-width:320px;">
+            <input type="hidden" name="username" value="{{ user.username }}">
+            <input type="password" name="new_password" placeholder="New Password" required style="border:1px solid #e3e7ef;border-radius:8px;padding:10px 14px;font-size:1em;background:#f4f6fb;transition:border 0.2s;">
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required style="border:1px solid #e3e7ef;border-radius:8px;padding:10px 14px;font-size:1em;background:#f4f6fb;transition:border 0.2s;">
+            <button type="submit" style="border:none;border-radius:8px;padding:10px 0;font-size:1em;font-weight:600;background:#007bff;color:#fff;cursor:pointer;">Confirm Change</button>
+          </form>
+        </div>
+      </section>
+      <section id="notes-section" style="display:none;width:100%;max-width:700px;min-width:340px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);padding:32px 32px 24px 32px;margin-bottom:0;flex-direction:column;align-items:center;">
+        <h2 style="font-size:1.35em;font-weight:700;margin-bottom:18px;color:#1a237e;letter-spacing:0.2px;text-align:center;">Your Notes</h2>
+        <form id="add-note-form" method="POST" action="/add_note" style="display:flex;flex-direction:column;gap:10px;background:#f4f6fb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.04);padding:16px 16px 12px 16px;margin-bottom:18px;width:100%;max-width:500px;">
+          <input type="text" name="title" placeholder="Note Title" required style="border:1.2px solid #e3f0ff;border-radius:7px;padding:10px 14px;font-size:1em;background:#fff;">
+          <textarea name="content" placeholder="Write your note here..." required style="border:1.2px solid #e3f0ff;border-radius:7px;padding:10px 14px;font-size:1em;background:#fff;min-height:60px;max-height:180px;"></textarea>
+          <button type="submit" style="background:#007bff;color:#fff;border:none;border-radius:7px;padding:10px 0;font-size:1em;font-weight:600;cursor:pointer;margin-top:8px;width:130px;align-self:flex-end;">Add Note</button>
+        </form>
+        <ul class="notes-list" style="list-style:none;padding:0;margin:0;margin-top:18px;width:100%;max-width:500px;">
+          {% for note in user.notes %}
+          <li class="note-item" style="background:#f4f6fb;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.04);margin-bottom:14px;padding:14px 16px 10px 16px;position:relative;transition:box-shadow 0.2s;display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr auto;gap:0;align-items:start;">
+            <div style="grid-row:1;grid-column:1/3;width:100%;display:flex;align-items:center;justify-content:space-between;">
+              <span class="note-title" onclick="toggleNoteContent(this)" style="font-weight:600;color:#1565c0;cursor:pointer;font-size:1.08em;">{{ note.title }}</span>
+              <form method="POST" action="/delete_note" class="delete-note-form" style="margin:0;display:inline;">
+                <input type="hidden" name="title" value="{{ note.title }}">
+                <button type="submit" class="delete-btn" style="background:#f8d7da;color:#c82333;border:none;border-radius:7px;padding:7px 12px;font-size:1em;font-weight:600;cursor:pointer;transition:background 0.2s,color 0.2s;margin-left:10px;">Delete</button>
+              </form>
+            </div>
+            <div class="note-content" style="display:none;grid-row:2;grid-column:1/3;color:#222;background:#fff;border-radius:7px;padding:18px 18px 18px 18px;margin-top:10px;font-size:1.08em;word-break:break-word;min-height:60px;max-height:350px;overflow:auto;box-shadow:0 2px 8px rgba(21,101,192,0.07);">{{ note.content }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+    </main>
+    <script>
+      // Tab persistence and correct display on refresh
+      function showTab(tab) {
+        if (tab === 'notes') {
+          document.getElementById('profile-section').style.display = 'none';
+          document.getElementById('notes-section').style.display = 'flex';
+          document.getElementById('notes-tab').classList.add('active');
+          document.getElementById('profile-tab').classList.remove('active');
+        } else {
+          document.getElementById('profile-section').style.display = 'block';
+          document.getElementById('notes-section').style.display = 'none';
+          document.getElementById('profile-tab').classList.add('active');
+          document.getElementById('notes-tab').classList.remove('active');
+        }
+      }
+      window.addEventListener('DOMContentLoaded', function () {
+        // Tab persistence
+        let activeTab = localStorage.getItem('dashboardTab') || 'profile';
+        showTab(activeTab);
+        document.getElementById('profile-tab').onclick = function(e) {
+          e.preventDefault();
+          showTab('profile');
+          localStorage.setItem('dashboardTab', 'profile');
+        };
+        document.getElementById('notes-tab').onclick = function(e) {
+          e.preventDefault();
+          showTab('notes');
+          localStorage.setItem('dashboardTab', 'notes');
+        };
+        document.getElementById('change-password-btn').onclick = function() {
+          const form = document.getElementById('change-password-form');
+          form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        };
+        window.toggleNoteContent = function(el) {
+          // Find the parent grid row (the div containing the title and delete button)
+          const parent = el.closest('div');
+          // The note-content is the next sibling of the parent div
+          const content = parent.nextElementSibling;
+          if (!content) return;
+          content.style.display = content.style.display === 'none' ? 'block' : 'none';
+        };
+      });
+    </script>
+  {% endif %}
+</div>
+{% endblock %}

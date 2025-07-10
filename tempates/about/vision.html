@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Vision & Mission | Eureka School{% endblock %}
+
+{% block content %}
+<!-- 🌟 Page Heading -->
+<section class="bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Our Vision & Mission</h1>
+    <p class="lead">Guiding every step of our educational journey with purpose and passion.</p>
+  </div>
+</section>
+
+<!-- 👁️ Vision -->
+<section class="container my-5">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='assets/vision.jpg') }}" class="img-fluid rounded shadow" alt="Vision">
+    </div>
+    <div class="col-md-6">
+      <h2 class="fw-bold">Our Vision</h2>
+      <p class="fs-5">
+        To be a beacon of excellence in school education by nurturing confident, creative, and responsible global citizens.
+        At Eureka, we envision an environment where learning is joyful, curiosity is celebrated, and every child is empowered
+        to shape a brighter future.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- 🎯 Mission -->
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2">
+        <img src="{{ url_for('static', filename='assets/mission.jpg') }}" class="img-fluid rounded shadow" alt="Mission">
+      </div>
+      <div class="col-md-6">
+        <h2 class="fw-bold">Our Mission</h2>
+        <ul class="fs-5">
+          <li class="mb-2">📘 To foster lifelong learners who think critically and act compassionately.</li>
+          <li class="mb-2">🎨 To offer a vibrant curriculum that balances academics with creativity and values.</li>
+          <li class="mb-2">🌍 To encourage community connection, environmental awareness, and global citizenship.</li>
+          <li class="mb-2">🤝 To build partnerships between educators, parents, and students for holistic growth.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

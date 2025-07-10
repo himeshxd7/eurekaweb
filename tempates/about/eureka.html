@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}About Eureka School{% endblock %}
+{% block content %}
+<div class="container my-5">
+  <h2 class="fw-bold text-center mb-4">About Eureka School</h2>
+  <p class="lead text-center">Eureka School is built on a vision of nurturing excellence, character, and leadership.</p>
+  <p>We aim to deliver holistic education that prepares students for a future filled with opportunity, responsibility, and innovation.
+    Established in the year 2007, Eurekha Public School, Pindwara has emerged as a beacon of holistic education in the region, dedicated to nurturing young minds with a strong foundation of knowledge, values, and creativity. Since its inception, the school has been committed to delivering quality education that blends academic excellence with character building and life skills.
+With a vision to shape responsible global citizens, Eurekha Public School continuously strives to create a dynamic and inclusive learning environment. The school emphasizes outcome-based teaching methods, interdisciplinary learning, and the integration of modern educational tools and technologies. It also aims to stay ahead by adapting to evolving educational trends and fostering curiosity, innovation, and critical thinking among students.
+Eurekha Public School is not only focused on academic growth but also places great importance on co-curricular development, sports, and cultural engagement to ensure all-round development. The school actively encourages community involvement and instills a strong sense of social responsibility in its students.
+By continuously enhancing its teaching methodologies and maintaining high standards of educational integrity, Eureka Public School, Pindwara aspires to be a center of excellence that inspires future leaders and changemakers.
+</p>
+</div>
+<div class="row mt-5">
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='assets/about/about-campus.jpg') }}" class="img-fluid rounded shadow" alt="Eureka School campus with students walking along tree-lined paths in front of a modern school building on a sunny day, creating a welcoming and vibrant atmosphere">
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <ul class="fs-5">
+        <li>✅ World-class faculty and mentoring</li>
+        <li>✅ Holistic academic programs with hands-on learning</li>
+        <li>✅ Focus on creativity, leadership, and problem-solving</li>
+        <li>✅ Vibrant campus with co-curricular and cultural events</li>
+        <li>✅ Committed to building a sustainable and inclusive future</li>
+      </ul>
+    </div>
+
+    
+
+
+{% endblock %}

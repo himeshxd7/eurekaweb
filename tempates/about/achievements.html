@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}Achievements | Eureka School{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+  <h2 class="text-center fw-bold mb-4">Our Achievements</h2>
+  <p class="lead text-center mb-5">
+    At Eureka School, excellence is not a goal — it’s a habit. Our students and faculty have consistently brought pride through academic, cultural, and sports achievements.
+  </p>
+
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-0 h-100">
+        <div class="card-body">
+          <h5 class="fw-bold text-success">🏆 National Olympiad Champions</h5>
+          <p>Gold medals won in Science and Math Olympiads for three consecutive years.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-0 h-100">
+        <div class="card-body">
+          <h5 class="fw-bold text-primary">🎨 Cultural Fest Winners</h5>
+          <p>First prize in state-level drama, dance, and painting competitions.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow border-0 h-100">
+        <div class="card-body">
+          <h5 class="fw-bold text-warning">⚽ Sports Glory</h5>
+          <p>District-level football, basketball, and chess champions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <img src="{{ url_for('static', filename='assets/about/trophies.jpg') }}" alt="Achievements" class="img-fluid rounded shadow" style="max-height: 400px;">
+  </div>
+</section>
+{% endblock %}

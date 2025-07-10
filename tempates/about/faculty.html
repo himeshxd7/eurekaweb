@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Faculty | Eureka School{% endblock %}
+
+{% block content %}
+<section class="container my-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold display-5">🌟 Meet Our Esteemed Faculty</h2>
+    <p class="lead text-muted">
+      At Eureka School, we take pride in our dynamic team of educators — experienced, passionate, and visionary leaders shaping tomorrow’s minds.
+    </p>
+    <hr class="w-25 mx-auto">
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0 h-100">
+        <img src="{{ url_for('static', filename='assets/faculty/faculty1.jpg') }}" class="card-img-top rounded-top" alt="Mrs. Anjali Sharma">
+        <div class="card-body text-center">
+          <h5 class="fw-bold text-primary">Mrs. Anjali Sharma</h5>
+          <p class="text-muted fst-italic">Principal</p>
+          <p class="small">A visionary educator with 25+ years of experience, known for progressive school leadership and student-centric innovation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0 h-100">
+        <img src="{{ url_for('static', filename='assets/faculty/faculty2.jpg') }}" class="card-img-top rounded-top" alt="Mr. Rahul Deshmukh">
+        <div class="card-body text-center">
+          <h5 class="fw-bold text-primary">Mr. Rahul Deshmukh</h5>
+          <p class="text-muted fst-italic">Science & Robotics Mentor</p>
+          <p class="small">STEM innovator and national-level robotics mentor, guiding students to push boundaries of science and engineering.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0 h-100">
+        <img src="{{ url_for('static', filename='assets/faculty/faculty3.jpg') }}" class="card-img-top rounded-top" alt="Ms. Priya Nair">
+        <div class="card-body text-center">
+          <h5 class="fw-bold text-primary">Ms. Priya Nair</h5>
+          <p class="text-muted fst-italic">English & Communication</p>
+          <p class="small">Award-winning author and language expert focused on unlocking creative expression and global communication skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

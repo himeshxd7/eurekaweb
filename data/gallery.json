@@ -1,0 +1,11 @@
+{
+  "title": "Gallery",
+  "images": [
+    {"alt": "Inauguration Ceremony", "placeholder": "[IMAGE PLACEHOLDER]"},
+    {"alt": "Convocation 2024", "placeholder": "[IMAGE PLACEHOLDER]"},
+    {"alt": "Annual Tech Fest", "placeholder": "[IMAGE PLACEHOLDER]"}
+  ],
+  "videos": [
+    {"alt": "Campus Tour", "placeholder": "[VIDEO PLACEHOLDER]"}
+  ]
+}

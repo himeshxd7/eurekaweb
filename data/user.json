@@ -1,0 +1,26 @@
+[
+  {
+    "username": "himeshwani",
+    "password": "12345",
+    "role": "student",
+    "notes": []
+  },
+  {
+    "username": "preetsonar",
+    "password": "12345",
+    "role": "student",
+    "notes": []
+  },
+  {
+    "username": "yashpawar",
+    "password": "12345",
+    "role": "student",
+    "notes": []
+  },
+  {
+    "username": "yashmaru",
+    "password": "12345",
+    "role": "teacher",
+    "notes": []
+  }
+]

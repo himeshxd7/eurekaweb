@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block title %}Admissions | Eureka School{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <!-- 🏫 Page Title -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-primary display-5">Admissions Open for 2025-26</h2>
+    <p class="lead text-muted">Join our vibrant Eureka family and shape your child's future with excellence in education.</p>
+  </div>
+
+  <!-- 📝 Admission Highlights -->
+  <div class="row mb-5">
+    <div class="col-md-6">
+      <h4 class="fw-bold text-success">Admission Process</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">✅ Application submission (online/offline)</li>
+        <li class="list-group-item">✅ Document verification (birth certificate, Aadhar, report card)</li>
+        <li class="list-group-item">✅ Parent-student interaction with faculty</li>
+        <li class="list-group-item">✅ Admission confirmation & fee payment</li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h4 class="fw-bold text-danger">Eligibility & Grades</h4>
+      <p>Admissions are open for <strong>Nursery to Grade 10</strong>.</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">🎓 Nursery (2.5+ yrs), KG-I, KG-II</li>
+        <li class="list-group-item">📚 Grade 1 to Grade 10 - Age-appropriate based on CBSE norms</li>
+        <li class="list-group-item">🗓️ Admission deadline: <strong>31st March 2025</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 💬 Why Eureka Section -->
+  <div class="bg-warning bg-opacity-25 p-4 rounded shadow mb-5">
+    <h4 class="fw-bold">Why Choose Eureka School?</h4>
+    <ul class="list-unstyled mt-3">
+      <li>🌱 Holistic, activity-based learning</li>
+      <li>📖 CBSE Curriculum with 21st-century skills</li>
+      <li>👩‍🏫 Experienced and trained educators</li>
+      <li>🏫 Safe, secure, and digitally enabled campus</li>
+      <li>🤝 Personalized student attention</li>
+    </ul>
+  </div>
+
+  <!-- 📥 Inquiry Form -->
+  <div class="card shadow-sm p-4 mb-5">
+    <h4 class="fw-bold mb-4">Submit an Admission Inquiry</h4>
+    <form id="admission-form">
+      <div class="mb-3">
+        <label class="form-label">Student Name</label>
+        <input type="text" class="form-control" name="name" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Parent Email</label>
+        <input type="email" class="form-control" name="email" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Interested Grade</label>
+        <select class="form-select" name="grade" required>
+          <option value="" disabled selected>Choose Grade</option>
+          {% for grade in range(1, 11) %}
+            <option>Grade {{ grade }}</option>
+          {% endfor %}
+          <option>Nursery</option>
+          <option>KG-I</option>
+          <option>KG-II</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Message / Questions</label>
+        <textarea class="form-control" rows="3" name="message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+    </form>
+    <div id="form-status" class="mt-3 text-success fw-bold"></div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("admission-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const payload = Object.fromEntries(formData.entries());
+    
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    });
+    
+    if (res.ok) {
+      document.getElementById("form-status").textContent = "✅ Inquiry submitted successfully!";
+      this.reset();
+    } else {
+      document.getElementById("form-status").textContent = "❌ Failed to submit. Please try again.";
+    }
+  });
+</script>
+{% endblock %}

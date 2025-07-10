@@ -1,0 +1,326 @@
+
+
+/* Dashboard/Profile Styles */
+.dashboard-container {
+  display: flex;
+  min-height: 80vh;
+  background: #f4f6fb;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1100px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.sidebar {
+  width: 260px;
+  background: #fff;
+  border-radius: 12px 0 0 12px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007bff;
+  margin-bottom: 10px;
+}
+.role-btn {
+  background: #e3f0ff;
+  color: #007bff;
+  border: none;
+  border-radius: 16px;
+  padding: 6px 18px;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 8px;
+  cursor: pointer;
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-nav li {
+  margin: 18px 0;
+}
+.sidebar-nav a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 8px 24px;
+  border-radius: 6px;
+  display: block;
+  transition: background 0.2s;
+}
+.sidebar-nav a.active, .sidebar-nav a:hover {
+  background: #e3f0ff;
+  color: #007bff;
+}
+.dashboard-main {
+  flex: 1;
+  padding: 40px 48px;
+  background: #f4f6fb;
+  border-radius: 0 12px 12px 0;
+}
+#profile-section h2 {
+  margin-bottom: 18px;
+}
+#change-password-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+#change-password-form {
+  margin-bottom: 18px;
+}
+#change-password-form input {
+  margin: 6px 0;
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 220px;
+  display: block;
+}
+#change-password-form button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 4px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.logout-btn {
+  background: #ff3b3b;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  margin-top: 18px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+}
+#notes-section h2 {
+  margin-bottom: 18px;
+}
+#add-note-form {
+  margin-bottom: 18px;
+}
+#add-note-form input, #add-note-form textarea {
+  width: 100%;
+  margin: 6px 0;
+  padding: 7px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+#add-note-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 4px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.notes-list {
+  list-style: none;
+  padding: 0;
+}
+.note-item {
+  background: #fff;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.note-title {
+  font-weight: 600;
+  color: #007bff;
+  cursor: pointer;
+  margin-right: 18px;
+}
+.note-content {
+  background: #f4f6fb;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  color: #333;
+  font-size: 1em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.delete-note-form {
+  display: inline;
+}
+.delete-btn {
+  background: #ff3b3b;
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95em;
+  margin-left: 10px;
+}
+@media (max-width: 900px) {
+  .dashboard-container {
+    flex-direction: column;
+    max-width: 98vw;
+  }
+  .sidebar {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 18px 0;
+  }
+  .dashboard-main {
+    padding: 24px 10px;
+    border-radius: 0 0 12px 12px;
+  }
+}
+/* ✅ Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #fff; /* Remove green */
+  color: #333;
+}
+
+/* ✅ Header and topbar */
+.topbar {
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 14px;
+  padding: 6px 15px;
+  text-align: right;
+}
+
+/* Hoverable Bootstrap Dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* align better */
+  transition: all 0.3s ease;
+}
+
+/* Optional: Remove blue hover for cleaner look */
+.dropdown-menu {
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu .dropdown-item {
+  color: #333;
+  padding: 10px 20px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #e0e0e0;
+  color: #0056b3;
+}
+
+
+/* ✅ Navbar */
+.navbar {
+  background-color: #007bff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  color: white;
+}
+
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Carousel */
+.carousel img {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+}
+
+/* ✅ Welcome Section */
+.welcome-section {
+  padding: 60px 80px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.welcome-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.welcome-section p {
+  font-size: 1.1em;
+  color: #555;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ✅ Announcement Bar */
+.announcement-bar {
+  background-color: #ffc107;
+  padding: 10px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ✅ Footer */
+footer {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+
+/* ✅ Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .navbar a {
+    margin: 8px 0;
+  }
+  .welcome-section {
+    padding: 40px 20px;
+  }
+}
