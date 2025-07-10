@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}Programs | Eureka School{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold text-primary display-5">Our Academic Programs</h2>
+    <p class="lead text-muted">Explore structured learning from foundational years to Grade 10.</p>
+  </div>
+
+  <!-- 🎓 Grade Levels -->
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    <div class="col">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-primary">Pre-Primary</h5>
+          <p class="card-text">Nursery to KG-II. Focus on sensory learning, motor skills, phonics & joyful activities.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-success">Primary</h5>
+          <p class="card-text">Grades 1-5. Core academic skills with values, languages, maths, and experiential science.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border-0 shadow h-100">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-danger">Middle & Secondary</h5>
+          <p class="card-text">Grades 6-10. Focus on critical thinking, STEM, language mastery & CBSE-based assessment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📘 Syllabus Info -->
+  <div class="bg-light p-5 rounded shadow mb-5">
+    <h4 class="fw-bold text-dark">Syllabus & Curriculum</h4>
+    <p>
+      Eureka School strictly follows the <strong>CBSE curriculum</strong> to ensure uniformity and quality in education.
+      The teaching is supplemented with activity-based methods, digital content, interactive assessments, and regular revisions.
+    </p>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">⚡ Emphasis on concepts and skill-building</li>
+      <li class="list-group-item">🎨 Integrated co-curricular and sports programs</li>
+      <li class="list-group-item">📊 Regular assessments, olympiads, and project-based learning</li>
+      <li class="list-group-item">🧠 Emotional intelligence, leadership & communication workshops</li>
+    </ul>
+  </div>
+
+  <!-- 🎯 Focus Areas -->
+  <div class="row text-center">
+    <div class="col-md-4">
+      <i class="bi bi-lightbulb display-4 text-warning mb-3"></i>
+      <h5 class="fw-bold">Innovation & Curiosity</h5>
+      <p>Encouraging students to ask questions, think creatively, and explore ideas beyond textbooks.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-people-fill display-4 text-primary mb-3"></i>
+      <h5 class="fw-bold">Character Building</h5>
+      <p>Core values like integrity, empathy, and discipline are infused into daily learning.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-globe-asia-australia display-4 text-success mb-3"></i>
+      <h5 class="fw-bold">Global Perspective</h5>
+      <p>Students are exposed to current affairs, cultures, and global challenges from a young age.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
